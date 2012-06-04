@@ -29,7 +29,7 @@
 			preview.style.left = "0px";
 			preview.style.top = "0px";
 			/*这个是first方法给每个links元素赋值*/
-			links[0].onmouseover = function(){
+			/*links[0].onmouseover = function(){
 				moveElement("preview",-100,0,10);
 			}
 			links[1].onmouseover = function(){
@@ -37,15 +37,15 @@
 			}
 			links[2].onmouseover = function(){
 				moveElement("preview",-300,0,10);
-			}
+			}*/
 			/*改进一下写法用循环，这个是用for尝试*/
-			/*for(var i=0; i<links.length; i++){
-				/*这个是我一开始写的，alert(i)值总是3，不知道为什么，一问群里才知道是由于闭包问题引起的，闭包我还没看，先预留问题在此
-				links[i].onmouseover = function(){
+			for(var i=0; i<links.length; i++){
+				/*这个是我一开始写的，alert(i)值总是3，不知道为什么，一问群里才知道是由于闭包问题引起的，闭包我还没看，先预留问题在此*/
+				/*links[i].onmouseover = function(){
 				  
 					moveElement("preview",(i)*(-100),0,10);
 					alert(i);
-				//}
+				}*/
 				links[i].onmouseover =new  function(){//这个能实现first方法的效果，用的闭包方法，是群友写的
 					var t =i;
 					return function(){
@@ -53,7 +53,7 @@
 					}
 				}
 				
-			}*/
+			}
 			
 		}
 		function moveElement(elemId,final_x,final_y,interval){//计算移动
@@ -69,24 +69,35 @@
 			if(offset_x == final_x && offset_y == final_y){//判断是否到目的地
 			  return true;
 			}
+			/*这个是逐步移动，有点慢
 			if(offset_x < final_x){
 				offset_x++;
-				//dis = Math.ceil(final_x - offset_x)/10;
-				//offset_x += dis;
 			}else if(offset_x > final_x){
 				offset_x--;
-				//dis = Math.ceil(offset_x - final_x)/10;
-				//offset_x -= dis;
 			}
 			if(offset_y < final_y){
 				offset_y++;
-				//dis = Math.ceil(final_y - offset_y)/10;
-				//offset_y += dis;
 			}else if(offset_y > final_y){
 				offset_y--;
-				//dis = Math.ceil(offset_y - final_y)/10;
-				//offset_y -= dis;
+			}*/
+			/*改进一下，让离的远就移动的多点，离的近就移动的少点*/
+			if(offset_x < final_x){
+				dis = Math.ceil(final_x - offset_x)/10;//这里'/10'为了动态调整移动的距离，如offset_x与final_x相差500，
+				                                      //那么500/10就是50px，如果是相差100，那么100/10就是10px
+																							//这里用Math.ceil为了处理当他们的差值小于1px的情况
+				offset_x += dis;
+			}else if(offset_x > final_x){
+				dis = Math.ceil(offset_x - final_x)/10;//offset_x大于final_x，也就是超过了
+				offset_x -= dis;
 			}
+			if(offset_y < final_y){
+				dis = Math.ceil(final_y - offset_y)/10;
+				offset_y += dis;
+			}else if(offset_y > final_y){
+				dis = Math.ceil(offset_y - final_y)/10;//offset_y大于final_y，也就是超过了
+				offset_y -= dis;
+			}
+			
 			elem.style.left = offset_x + "px";
 			elem.style.top = offset_y + "px";
 			var reap = "moveElement('" + elemId + "'," + final_x + "," + final_y + "," + interval +")";//这个我自己写的函数以前一直不起
