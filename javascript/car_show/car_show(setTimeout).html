@@ -82,9 +82,9 @@
 			}*/
 			/*改进一下，让离的远就移动的多点，离的近就移动的少点*/
 			if(offset_x < final_x){
-				dis = Math.ceil(final_x - offset_x)/10;//这里'/10'为了动态调整移动的距离，如offset_x与final_x相差500，
-				                                      //那么500/10就是50px，如果是相差100，那么100/10就是10px
-																							//这里用Math.ceil为了处理当他们的差值小于1px的情况
+			/*这里'/10'为了动态调整移动的距离，如offset_x与final_x相差500，那么500/10就是50px，如果是相差100，那么100/10就是10px
+			这里用Math.ceil为了处理当他们的差值小于1px的情况*/
+				dis = Math.ceil(final_x - offset_x)/10;
 				offset_x += dis;
 			}else if(offset_x > final_x){
 				dis = Math.ceil(offset_x - final_x)/10;//offset_x大于final_x，也就是超过了
