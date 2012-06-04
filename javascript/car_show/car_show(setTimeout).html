@@ -1,0 +1,100 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title></title>
+	<style type="text/css">
+	  .imgshows{overflow:hidden;position:relative;width:100px;height:100px;}
+		
+	</style>
+</head>
+<body>
+	<div class="car_show">
+		<h1>cars show</h1>
+		<ul id="cars">
+			<li><a href="#">first car</a></li>
+			<li><a href="#">second car</a></li>
+			<li><a href="#">third car</a></li>
+			
+		</ul>
+	</div>
+	<div class="imgshows"><img id="preview" src="images/topics.gif" alt="car shows" title="cars show"/></div>
+	<script type="text/javascript">
+		function positionLinks(){//完成一个功能：鼠标悬停到哪个链接，显示第几个图片
+		
+			var cars = document.getElementById("cars");
+			var links = cars.getElementsByTagName("a");
+			var preview = document.getElementById("preview");
+			preview.style.position = "absolute";
+			preview.style.left = "0px";
+			preview.style.top = "0px";
+			/*这个是first方法给每个links元素赋值*/
+			links[0].onmouseover = function(){
+				moveElement("preview",-100,0,10);
+			}
+			links[1].onmouseover = function(){
+				moveElement("preview",-200,0,10);
+			}
+			links[2].onmouseover = function(){
+				moveElement("preview",-300,0,10);
+			}
+			/*改进一下写法用循环，这个是用for尝试*/
+			/*for(var i=0; i<links.length; i++){
+				/*这个是我一开始写的，alert(i)值总是3，不知道为什么，一问群里才知道是由于闭包问题引起的，闭包我还没看，先预留问题在此
+				links[i].onmouseover = function(){
+				  
+					moveElement("preview",(i)*(-100),0,10);
+					alert(i);
+				//}
+				links[i].onmouseover =new  function(){//这个能实现first方法的效果，用的闭包方法，是群友写的
+					var t =i;
+					return function(){
+					  moveElement("preview",(t+1)*(-100),0,10);
+					}
+				}
+				
+			}*/
+			
+		}
+		function moveElement(elemId,final_x,final_y,interval){//计算移动
+		  if (!document.getElementById) return false;
+			if (!document.getElementById(elemId)) return false;
+		  var elem = document.getElementById(elemId);
+			if (elem.move) {
+				clearTimeout(elem.move);
+			}
+			var offset_x = parseInt(elem.style.left);
+			var offset_y = parseInt(elem.style.top);
+			var dis = 0;
+			if(offset_x == final_x && offset_y == final_y){//判断是否到目的地
+			  return true;
+			}
+			if(offset_x < final_x){
+				offset_x++;
+				//dis = Math.ceil(final_x - offset_x)/10;
+				//offset_x += dis;
+			}else if(offset_x > final_x){
+				offset_x--;
+				//dis = Math.ceil(offset_x - final_x)/10;
+				//offset_x -= dis;
+			}
+			if(offset_y < final_y){
+				offset_y++;
+				//dis = Math.ceil(final_y - offset_y)/10;
+				//offset_y += dis;
+			}else if(offset_y > final_y){
+				offset_y--;
+				//dis = Math.ceil(offset_y - final_y)/10;
+				//offset_y -= dis;
+			}
+			elem.style.left = offset_x + "px";
+			elem.style.top = offset_y + "px";
+			var reap = "moveElement('" + elemId + "'," + final_x + "," + final_y + "," + interval +")";//这个我自己写的函数以前一直不起
+																																				//作用，是因为它自身调用传参数的时候，应该是elemId而不是elem
+			elem.move = setTimeout(reap,interval);
+		}
+		positionLinks();
+		
+	</script>
+</body>
+</html>
