@@ -20,7 +20,7 @@
 	</div>
 	<div class="imgshows"><img id="preview" src="images/topics.gif" alt="car shows" title="cars show"/></div>
 	<script type="text/javascript">
-		function positionLinks(){//Íê³ÉÒ»¸ö¹¦ÄÜ£ºÊó±êÐüÍ£µ½ÄÄ¸öÁ´½Ó£¬ÏÔÊ¾µÚ¼¸¸öÍ¼Æ¬
+		function positionLinks(){//ï¿½ï¿½ï¿½Ò»ï¿½ï¿½ï¿½Ü£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í£ï¿½ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½Ó£ï¿½ï¿½ï¿½Ê¾ï¿½Ú¼ï¿½ï¿½ï¿½Í¼Æ¬
 		
 			var cars = document.getElementById("cars");
 			var links = cars.getElementsByTagName("a");
@@ -28,7 +28,7 @@
 			preview.style.position = "absolute";
 			preview.style.left = "0px";
 			preview.style.top = "0px";
-			/*Õâ¸öÊÇfirst·½·¨¸øÃ¿¸ölinksÔªËØ¸³Öµ*/
+			/*ï¿½ï¿½ï¿½ï¿½ï¿½firstï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¿ï¿½ï¿½linksÔªï¿½Ø¸ï¿½Öµ*/
 			/*links[0].onmouseover = function(){
 				moveElement("preview",-100,0,10);
 			}
@@ -38,15 +38,15 @@
 			links[2].onmouseover = function(){
 				moveElement("preview",-300,0,10);
 			}*/
-			/*¸Ä½øÒ»ÏÂÐ´·¨ÓÃÑ­»·£¬Õâ¸öÊÇÓÃfor³¢ÊÔ*/
+			/*ï¿½Ä½ï¿½Ò»ï¿½ï¿½Ð´ï¿½ï¿½ï¿½ï¿½Ñ­ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½forï¿½ï¿½ï¿½ï¿½*/
 			for(var i=0; i<links.length; i++){
-				/*Õâ¸öÊÇÎÒÒ»¿ªÊ¼Ð´µÄ£¬alert(i)Öµ×ÜÊÇ3£¬²»ÖªµÀÎªÊ²Ã´£¬Ò»ÎÊÈºÀï²ÅÖªµÀÊÇÓÉÓÚ±Õ°üÎÊÌâÒýÆðµÄ£¬±Õ°üÎÒ»¹Ã»¿´£¬ÏÈÔ¤ÁôÎÊÌâÔÚ´Ë*/
+				/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½Ê¼Ð´ï¿½Ä£ï¿½alert(i)Öµï¿½ï¿½ï¿½ï¿½3ï¿½ï¿½ï¿½ï¿½Öªï¿½ï¿½ÎªÊ²Ã´ï¿½ï¿½Ò»ï¿½ï¿½Èºï¿½ï¿½ï¿½Öªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú±Õ°ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä£ï¿½ï¿½Õ°ï¿½ï¿½Ò»ï¿½Ã»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¤ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú´ï¿½*/
 				/*links[i].onmouseover = function(){
 				  
 					moveElement("preview",(i)*(-100),0,10);
 					alert(i);
 				}*/
-				links[i].onmouseover =new  function(){//Õâ¸öÄÜÊµÏÖfirst·½·¨µÄÐ§¹û£¬ÓÃµÄ±Õ°ü·½·¨£¬ÊÇÈºÓÑÐ´µÄ
+				links[i].onmouseover =new  function(){//ï¿½ï¿½ï¿½ï¿½ï¿½Êµï¿½ï¿½firstï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ÃµÄ±Õ°ï¿½ï¿½ï¿½ï¿½Èºï¿½ï¿½Ð´ï¿½ï¿½
 					var t =i;
 					return function(){
 					  moveElement("preview",(t+1)*(-100),0,10);
@@ -56,7 +56,7 @@
 			}
 			
 		}
-		function moveElement(elemId,final_x,final_y,interval){//¼ÆËãÒÆ¶¯
+		function moveElement(elemId,final_x,final_y,interval){//ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½
 		  if (!document.getElementById) return false;
 			if (!document.getElementById(elemId)) return false;
 		  var elem = document.getElementById(elemId);
@@ -66,10 +66,10 @@
 			var offset_x = parseInt(elem.style.left);
 			var offset_y = parseInt(elem.style.top);
 			var dis = 0;
-			if(offset_x == final_x && offset_y == final_y){//ÅÐ¶ÏÊÇ·ñµ½Ä¿µÄµØ
+			if(offset_x == final_x && offset_y == final_y){//ï¿½Ð¶ï¿½ï¿½Ç·ï¿½Ä¿ï¿½Äµï¿½
 			  return true;
 			}
-			/*Õâ¸öÊÇÖð²½ÒÆ¶¯£¬ÓÐµãÂý
+			/*ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½Ðµï¿½ï¿½ï¿½
 			if(offset_x < final_x){
 				offset_x++;
 			}else if(offset_x > final_x){
@@ -80,28 +80,34 @@
 			}else if(offset_y > final_y){
 				offset_y--;
 			}*/
-			/*¸Ä½øÒ»ÏÂ£¬ÈÃÀëµÄÔ¶¾ÍÒÆ¶¯µÄ¶àµã£¬ÀëµÄ½ü¾ÍÒÆ¶¯µÄÉÙµã*/
+			/*ï¿½Ä½ï¿½Ò»ï¿½Â£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ä¶ï¿½ã£¬ï¿½ï¿½Ä½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½ï¿½ï¿½Ùµï¿½*/
 			if(offset_x < final_x){
+<<<<<<< HEAD
 			/*ÕâÀï'/10'ÎªÁË¶¯Ì¬µ÷ÕûÒÆ¶¯µÄ¾àÀë£¬Èçoffset_xÓëfinal_xÏà²î500£¬ÄÇÃ´500/10¾ÍÊÇ50px£¬Èç¹ûÊÇÏà²î100£¬ÄÇÃ´100/10¾ÍÊÇ10px
 			ÕâÀïÓÃMath.ceilÎªÁË´¦Àíµ±ËûÃÇµÄ²îÖµÐ¡ÓÚ1pxµÄÇé¿ö*/
 				dis = Math.ceil(final_x - offset_x)/10;
+=======
+				dis = Math.ceil(final_x - offset_x)/10;//ï¿½ï¿½ï¿½ï¿½'/10'Îªï¿½Ë¶ï¿½Ì¬ï¿½ï¿½ï¿½ï¿½ï¿½Æ¶ï¿½ï¿½Ä¾ï¿½ï¿½ë£¬ï¿½ï¿½offset_xï¿½ï¿½final_xï¿½ï¿½ï¿½500ï¿½ï¿½
+				                                      //ï¿½ï¿½Ã´500/10ï¿½ï¿½ï¿½ï¿½50pxï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½100ï¿½ï¿½ï¿½ï¿½Ã´100/10ï¿½ï¿½ï¿½ï¿½10px
+																							//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Math.ceilÎªï¿½Ë´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ÇµÄ²ï¿½ÖµÐ¡ï¿½ï¿½1pxï¿½ï¿½ï¿½ï¿½ï¿½
+>>>>>>> 688eb3e58881bc42f7583c55cdc9f9e760c31036
 				offset_x += dis;
 			}else if(offset_x > final_x){
-				dis = Math.ceil(offset_x - final_x)/10;//offset_x´óÓÚfinal_x£¬Ò²¾ÍÊÇ³¬¹ýÁË
+				dis = Math.ceil(offset_x - final_x)/10;//offset_xï¿½ï¿½ï¿½ï¿½final_xï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½
 				offset_x -= dis;
 			}
 			if(offset_y < final_y){
 				dis = Math.ceil(final_y - offset_y)/10;
 				offset_y += dis;
 			}else if(offset_y > final_y){
-				dis = Math.ceil(offset_y - final_y)/10;//offset_y´óÓÚfinal_y£¬Ò²¾ÍÊÇ³¬¹ýÁË
+				dis = Math.ceil(offset_y - final_y)/10;//offset_yï¿½ï¿½ï¿½ï¿½final_yï¿½ï¿½Ò²ï¿½ï¿½ï¿½Ç³ï¿½ï¿½ï¿½ï¿½ï¿½
 				offset_y -= dis;
 			}
 			
 			elem.style.left = offset_x + "px";
 			elem.style.top = offset_y + "px";
-			var reap = "moveElement('" + elemId + "'," + final_x + "," + final_y + "," + interval +")";//Õâ¸öÎÒ×Ô¼ºÐ´µÄº¯ÊýÒÔÇ°Ò»Ö±²»Æð
-																																				//×÷ÓÃ£¬ÊÇÒòÎªËü×ÔÉíµ÷ÓÃ´«²ÎÊýµÄÊ±ºò£¬Ó¦¸ÃÊÇelemId¶ø²»ÊÇelem
+			var reap = "moveElement('" + elemId + "'," + final_x + "," + final_y + "," + interval +")";//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¼ï¿½Ð´ï¿½Äºï¿½ï¿½ï¿½ï¿½ï¿½Ç°Ò»Ö±ï¿½ï¿½ï¿½ï¿½
+																																				//ï¿½ï¿½ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã´ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½elemIdï¿½ï¿½ï¿½ï¿½elem
 			elem.move = setTimeout(reap,interval);
 		}
 		positionLinks();
