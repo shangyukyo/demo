@@ -1,0 +1,60 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8" />
+	<title>ÎÞ·ì¹ö¶¯</title>
+	<style type="text/css">
+		.slide_main{overflow:hidden;width:810px;height:330px;}
+		ul{list-style:none;padding-left:0;margin:0;}
+		ul li{float:left;position:relative;width:810px;height:330px;border:1px solid #ccc;}
+		.img_3_0{position:absolute;left:0;top:0;}
+		.img_3_1{position:absolute;right:0;top:0;}
+		.img_3_2{position:absolute;right:163px;top:203px;}
+		.img_3_3{position:absolute;right:0;top:203px;}
+	</style>
+</head>
+<body>
+	<div class="slide_main">
+		<ul>
+			<li><a href="#"><img src="images/1.jpg" alt="" /></a></li>
+			<li><a href="#"><img src="images/2.jpg" alt="" /></a></li>
+			<li>
+				<a href="#" class="img_3_0"><img src="images/3_0.jpg" alt="3_0" /></a>
+				<a href="#" class="img_3_1"><img src="images/3_1.jpg" alt="3_1" /></a>
+				<a href="#" class="img_3_2"><img src="images/3_2.jpg" alt="3_2" /></a>
+				<a href="#" class="img_3_3"><img src="images/3_3.jpg" alt="3_3" /></a>
+			</li>
+		</ul>
+	</div>
+	<script type="text/javascript">
+		var Oul = document.getElementsByTagName("ul")[0];
+		var Oli = Oul.getElementsByTagName("li");
+		var time = null;
+		
+		function autoScroll(){
+			Oul.offsetHeight += "-330px";
+			Oul.appendChild(Oli[0]);
+		}
+		time = setInterval(autoScroll,1000);
+		Oul.onmouseover = function(){
+			clearInterval(time);
+			console.log(Oul.children);
+			var len = Oli.children[0].length;
+			if( len > 1){
+				for(var i=0; i<len; i++){
+					Oli.children[0][i].onmouseover = function(){
+						this.offsetTop -= "5px";
+					}
+				}
+			}
+		}
+		Oul.onmouseout = function(){
+			time = setInterval(autoScroll,1000);
+		}
+		
+		function upScroll(){
+			
+		}
+	</script>
+</body>
+</html>
